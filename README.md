@@ -1,4 +1,4 @@
-![image](https://github.com/DL-Practise/OpenSitUp/blob/main/logo.jpg)
+![image](https://github.com/DL-Practise/OpenSitUp/blob/main/logo.png)
 
 # 1.项目开源地址
 https://github.com/DL-Practise/OpenSitUp
