@@ -1,0 +1,1 @@
+from .keypoint.shufflenet_v2_heatmap import ShuffleNetV2HeatMap
