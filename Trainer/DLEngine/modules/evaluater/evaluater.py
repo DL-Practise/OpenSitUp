@@ -8,6 +8,7 @@ import logging
 import shutil
 from DLEngine.modules.metric.map import calculate_map
 from DLEngine.modules.metric.top1 import calculate_top1
+from DLEngine.modules.metric.oks import calculate_oks
 
 
 class Evaluater():
@@ -30,6 +31,9 @@ class Evaluater():
         if self.eval_dict['eval_type'] == 'top1':
             top1 = calculate_top1(result_info)
             print("reslut: top1=%.4f" % (top1))
+        elif self.eval_dict['eval_type'] == 'oks':
+            oks = calculate_oks(result_info)
+            print("reslut: osk=%.4f" % (oks))
         else:
-            pass
+            print("unknown eval type: %s" % (self.eval_dict['eval_type']))
 

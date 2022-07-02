@@ -16,10 +16,9 @@ import numpy as np
 import math
 
 ############################################################
-MODEL_FILE='save/keypoint_shufflenetv2_heatmap_2stages_224_1.0_3kps-20210402020950/model_48.pkl'
-CFG_FILE='cfgs/key_point/keypoint_shufflenetv2_heatmap_2stages_224_1.0_3kps.py'
-IMG_PATH='/data/zhengxing/my_dl/dataset/sit_up/test_images/ttt'
-#IMG_PATH='/data/zhengxing/temp/key_point_images/'
+MODEL_FILE='save/keypoint_shufflenetv2_heatmap_224_1.0_3kps-20220623141214/model_24.pkl'
+CFG_FILE='cfgs/key_point/keypoint_shufflenetv2_heatmap_224_1.0_3kps.py'
+IMG_PATH='../DataSet/image_from_pictures'
 ############################################################
 
 def load_pre_train_ignore_name(net, pre_train):
@@ -200,19 +199,22 @@ if __name__ == '__main__':
     print(net)
     load_pre_train_ignore_name(net, MODEL_FILE)
     net.eval()
-    net.cuda()
+    if torch.cuda.is_available():
+        net.cuda()
 
     # create dataloader
     data_name = cfg_dicts.data_dict['eval']['data_name']
-    dataset = data.__dict__[data_name]('eval', cfg_dicts.data_dict['eval'])
+    dataset = data.__dict__[data_name]('infer', cfg_dicts.data_dict['eval'])
 
     # get img lists and process
     plt.figure(figsize=(20, 20), dpi=100)
     img_list = get_need_test_images(IMG_PATH)
     for i, img_path in enumerate(img_list):
         img, img_ori, ori_w, ori_h = dataset.read_image(img_path)
-        img_t = torch.from_numpy(img).unsqueeze(0).cuda()
-
+        
+        img_t = torch.from_numpy(img).unsqueeze(0)
+        if torch.cuda.is_available():
+             img_t = img_t.cuda()
         # the network inference
         preds = net(img_t)
 

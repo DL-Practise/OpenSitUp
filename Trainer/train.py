@@ -29,13 +29,6 @@ if __name__ == '__main__':
     net = models.__dict__[model_name](model_args)
     print(net)
 
-    # calculate net flops
-    #stat(net, (3, 224, 224))
-    #input = torch.randn(1,3, 224, 224)
-    #macs,params = profile(net, inputs=(input,))
-    #print(macs, params)
-    #exit(0)
-
     # create dataset
     data_name = cfg_dicts.data_dict['train']['data_name']
     dataset_train = data.__dict__[data_name]('train', cfg_dicts.data_dict['train'])

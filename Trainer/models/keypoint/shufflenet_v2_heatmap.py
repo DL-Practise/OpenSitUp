@@ -204,7 +204,7 @@ class ShuffleNetV2HeatMap(nn.Module):
             heatmaps = nn.functional.sigmoid(x)
             return heatmaps
 
-    def train_step(self, images, labels, local_rank):  
+    def train_step(self, images, labels, local_rank=0):  
         preds = self.forward(images)
         preds = nn.functional.sigmoid(preds)
         batch = labels.shape[0]

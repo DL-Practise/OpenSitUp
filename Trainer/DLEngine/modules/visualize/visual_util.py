@@ -81,8 +81,7 @@ def visual_add_image_with_heatmap(images, preds, labels, mean, std, epoch):
         plt.subplot(2, kp_num, kp_num + kp_c + 1)
         plt.imshow(image0)
         plt.imshow(cv2.resize(label0[kp_c], (w, h)), alpha=0.5)
-
-    plt.savefig('./tran_%d.jpg'%epoch)
+    #plt.savefig('./train_epoch%d.jpg'%epoch)
     vis_writer.add_figure(tag='train', figure=fig, global_step=epoch)       
 
 def draw_det_img(img_paths, preds, labels, title='', save_path=None):

@@ -31,7 +31,7 @@ data_dict = {
         'gauss_ratio': 2,
         'gauss_sigma': 1,
         'heatmap': [28, 28], # w and h
-        'data_len_expand': 100, 
+        'data_len_expand': 1, #100, 
         },
     'eval':{
         'data_name': 'PersionKeypointTxt',
@@ -51,13 +51,13 @@ data_dict = {
 
 train_dict = {
     'device': 'cpu',  #'cuda' or 'cpu'
-    'enable_visual': True,
+    'enable_visual': False,
     'save_dir': '',
     'max_epoch': 24,
     'train_display': 10,
     'train_save': 1,
     'eval': {
-        'eval_enable': False,
+        'eval_enable': True,
         'start_eval': 1,
         'eval_epoch': 1,
         'eval_type': 'oks'

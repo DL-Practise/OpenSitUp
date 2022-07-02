@@ -179,20 +179,20 @@ class PersionKeypointTxt(Dataset):
                 KPRandomHorizontalFlip(),
                 KPRandomPadCrop(ratio=0.25, pad_value = self.mean),
                 KPResizeImage(self.resize),
-                KPRandomNegMixUp(ratio=0.5, neg_dir='../../dataset/sit_up/images_coco_neg/'),
+                #KPRandomNegMixUp(ratio=0.5, neg_dir='../../dataset/sit_up/images_coco_neg/'),
                 KPRandomSwapChannels(),
                 KPRandomContrast(),
                 KPRandomHSV(),
                 NormalizeImage(self.mean,self.std),]
-        elif self.phase == 'eval':
+        elif self.phase == 'eval' or self.phase == 'infer':
             self.transforms = [
                 KPResizeImage(self.resize),
                 NormalizeImage(self.mean,self.std),]
         else:
             logging.error('unsupport phase: %s'%phase)
             exit(0)
-    
-        self.read_label_file()
+        if self.phase != 'infer':
+            self.read_label_file()
 
     def __len__(self):
         return len(self.img_name)
