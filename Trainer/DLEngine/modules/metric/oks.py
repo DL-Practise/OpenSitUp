@@ -4,7 +4,8 @@ import torch
 import math
 
 def calculate_oks(result_info):
-
+    pass
+    '''
     preds = result_info['preds']
     labels = result_info['labels']
     assert(len(preds) == len(labels))
@@ -32,3 +33,4 @@ def calculate_oks(result_info):
     oks = np.array(oks_list).mean()
 
     return oks
+    '''

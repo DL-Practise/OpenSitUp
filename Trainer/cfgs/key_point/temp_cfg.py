@@ -21,8 +21,8 @@ data_dict = {
     'train':{
         'data_name': 'PersionKeypointTxt',
         'num_workers': 6,
-        'data_dir': '../DataSet/',
-        'data_label': '../DataSet/label_train.txt',
+        'data_dir': '../DataSet/images_train/',
+        'data_label': '../DataSet/images_train/label.txt',
         'batch_size': 32,
         'resize': [224, 224], # w and h
         'mean': [103.53,116.28,123.675],
@@ -31,7 +31,7 @@ data_dict = {
         'gauss_ratio': 2,
         'gauss_sigma': 1,
         'heatmap': [28, 28], # w and h
-        'data_len_expand': 1, #100, 
+        'data_len_expand': 100, 
         },
     'eval':{
         'data_name': 'PersionKeypointTxt',
@@ -50,14 +50,14 @@ data_dict = {
 }
 
 train_dict = {
-    'device': 'cpu',  #'cuda' or 'cpu'
-    'enable_visual': False,
+    'device': 'cuda',  #'cuda' or 'cpu'
+    'enable_visual': True,
     'save_dir': '',
     'max_epoch': 24,
     'train_display': 10,
     'train_save': 1,
     'eval': {
-        'eval_enable': True,
+        'eval_enable': False,
         'start_eval': 1,
         'eval_epoch': 1,
         'eval_type': 'oks'

@@ -203,7 +203,7 @@ class PersionKeypointTxt(Dataset):
         label = copy.deepcopy(label_ori)
         img_ori = cv2.imread(self.img_root + '/' + img_name, cv2.IMREAD_COLOR)
         if img_ori is None:
-            raise ValueError('cv2 read failed: ', img_name)
+            raise ValueError('cv2 read failed: ', self.img_root + '/' + img_name)
         ori_h, ori_w = img_ori.shape[0:2]
         img = img_ori.astype(np.float32)
         for t in self.transforms:

@@ -21,8 +21,8 @@ data_dict = {
     'train':{
         'data_name': 'PersionKeypointTxt',
         'num_workers': 6,
-        'data_dir': '../DataSet/',
-        'data_label': '../DataSet/label_train.txt',
+        'data_dir': '../DataSet/images_train/',
+        'data_label': '../DataSet/images_train/label.txt',
         'batch_size': 32,
         'resize': [224, 224], # w and h
         'mean': [103.53,116.28,123.675],
@@ -50,7 +50,7 @@ data_dict = {
 }
 
 train_dict = {
-    'device': 'cpu',  #'cuda' or 'cpu'
+    'device': 'cuda',  #'cuda' or 'cpu'
     'enable_visual': True,
     'save_dir': '',
     'max_epoch': 24,
